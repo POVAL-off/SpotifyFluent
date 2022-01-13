@@ -298,6 +298,7 @@ h3,
   -webkit-mask-repeat: no-repeat;
   -webkit-mask-position: center;
   display: block;
+  margin: auto;
 }
 
 .main-navBar-navBarLink .gSLhUO path,
@@ -1029,6 +1030,10 @@ a[class*='-tabBar-headerItemLink']:active {
 
 .Svg-sc-1bi12j5-0.hDgDGI.mOLTJ2mxkzHJj6Y9_na_:active {
   background-color: #2a2a2a;
+}
+
+.Svg-sc-1bi12j5-0.hDgDGI.CIVozJ8XNPJ60uMN23Yg {
+  margin: 0px;
 }
 
 /* Agent_RBY_ end */
