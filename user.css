@@ -1727,6 +1727,7 @@ input:checked~.x-toggle-indicatorWrapper:hover .x-toggle-indicator {
   transition: background ease-out 167ms;
 }
 button.main-playButton-PlayButton.main-playButton-primary[aria-label="liked-songs.a11y.pause"],
+button.main-trackList-rowImagePlayButton[aria-label="Пауза"],
 .main-card-PlayButtonContainerVisible > .main-playButton-PlayButton {
   background-image: url('./fluentui-system-icons/ic_fluent_pause_24_filled.svg');
 }
@@ -2122,4 +2123,12 @@ button.main-playButton-PlayButton.main-playButton-primary[aria-label="liked-song
     transform: translateY(0%);
     opacity: 1;
   }
+}
+
+/* Modal-delete */
+
+.K8PtC1Way9XetxDGwCGx {
+  backdrop-filter: blur(100px);
+  background-color: transparent;
+  color: #FFFFFF;
 }
