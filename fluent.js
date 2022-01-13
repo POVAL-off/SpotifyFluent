@@ -68,6 +68,62 @@
     document.querySelector("[href='/collection'] > span").innerHTML = "Library";
   });
 
+
+  waitForElement([".x-settings-container"], () => {
+    const expandMoreSettingsButton = document.querySelector(`.x-settings-button > button.main-buttons-button.main-button-outlined`);
+    expandMoreSettingsButton.click();
+
+    const audioQualityP = document.querySelector(`.x-settings-container > span > p.main-type-mesto`);
+    const audioQualitySpan = document.querySelector(`.x-settings-container > span > span.main-type-mesto`);
+
+    audioQualitySpan.innerHTML = `${audioQualitySpan.innerHTML}<br />${audioQualityP.innerHTML}`;
+    audioQualityP.remove();
+
+    const changeLocationButton = document.getElementById('desktop.settings.offline-storage');
+    const newChangeLocationButtonContainer = document.createElement('div')
+    newChangeLocationButtonContainer.setAttribute('class', 'x-settings-secondColumn change-location-button-container')
+    changeLocationButton.parentNode.insertBefore(newChangeLocationButtonContainer, changeLocationButton)
+    changeLocationButton.remove()
+    const changeLocationButtonContainer = document.querySelector('.change-location-button-container');
+    changeLocationButtonContainer.appendChild(changeLocationButton);
+
+    const disableCookies = document.querySelector('.main-type-mesto[for="desktop.settings.cookiesDisabled"]')
+    const newDisableCookiesContainer = document.createElement('span');
+    newDisableCookiesContainer.innerHTML = disableCookies.innerHTML;
+    disableCookies.innerHTML = '';
+    disableCookies.appendChild(newDisableCookiesContainer);
+
+    const secondColumns = document.querySelectorAll('span.x-settings-secondColumn');
+
+    function wrap(el, wrapper) {
+      el.parentNode.insertBefore(wrapper, el);
+      wrapper.appendChild(el);
+    }
+
+    secondColumns.forEach((secondColumn) => {
+      secondColumn.removeAttribute('class')
+      const newSecondColumWrapepr = document.createElement('div')
+      newSecondColumWrapepr.setAttribute('class', 'x-settings-secondColumn')
+      wrap(secondColumn, newSecondColumWrapepr)
+    })
+  });
+
+  setInterval(() => {
+    const songAuthors = document.querySelectorAll('.LBeI_sl8sCSYFu5fPTsO > span');
+    songAuthors.forEach((songAuthor, index) => {
+      if (songAuthor.innerHTML.includes(',')) {
+        songAuthor.innerHTML = songAuthor.innerHTML.replace(',', '');
+
+
+        const newD = document.createElement('span')
+        newD.innerHTML = '|';
+        newD.style = 'display: flex; align-items: center; padding: 0 5px'
+        songAuthor.parentNode.insertBefore(newD, songAuthor);
+        // s.innerHTML = `${s.innerHTML} | `
+      }
+    })
+  }, 10)
+
   const textColor = getComputedStyle(document.documentElement).getPropertyValue('--spice-text');
   if (textColor == " #000000") {
     document.documentElement.style.setProperty('--filter-brightness', 0);
@@ -83,15 +139,15 @@
       .main-playButton-PlayButton[aria-label="${Spicetify.Platform.Translations.play}"],
       .main-playPauseButton-button[aria-label="${Spicetify.Platform.Translations.play}"],
       .main-trackList-rowPlayPauseButton[aria-label="${Spicetify.Platform.Translations.play}"] {
-        background-color: var(--spice-text) !important;
-        -webkit-mask-image: url('./fluentui-system-icons/ic_fluent_play_24_filled.svg') !important;
+        background: transparent url('./fluentui-system-icons/ic_fluent_play_24_filled.svg') no-repeat center;
+        transition: background ease-out 167ms;
       }
       .main-playButton-button[aria-label="${Spicetify.Platform.Translations.pause}"],
       .main-playButton-PlayButton[aria-label="${Spicetify.Platform.Translations.pause}"],
       .main-playPauseButton-button[aria-label="${Spicetify.Platform.Translations.pause}"],
       .main-trackList-rowPlayPauseButton[aria-label="${Spicetify.Platform.Translations.pause}"] {
-        background-color: var(--spice-text) !important;
-        -webkit-mask-image: url('./fluentui-system-icons/ic_fluent_pause_16_filled.svg') !important;
+        background: transparent url('./fluentui-system-icons/ic_fluent_pause_24_filled.svg') no-repeat center;
+        transition: background ease-out 167ms;
       }
       `;
       document.getElementsByTagName('head')[0].appendChild(playButtonStyle);
