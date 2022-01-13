@@ -1726,7 +1726,7 @@ input:checked~.x-toggle-indicatorWrapper:hover .x-toggle-indicator {
   height: 32px !important;
   transition: background ease-out 167ms;
 }
-
+button.main-playButton-PlayButton.main-playButton-primary[aria-label="liked-songs.a11y.pause"],
 .main-card-PlayButtonContainerVisible > .main-playButton-PlayButton {
   background-image: url('./fluentui-system-icons/ic_fluent_pause_24_filled.svg');
 }
